@@ -7,8 +7,8 @@ jobs:
       fail-fast: false
       matrix:
         os:
-        - ubuntu-18.04
-        - macos-10.15
+        - ubuntu-20.04
+        - macos-11
         # Build binaries on older systems to require lower versions of libc and
         # other system libraries.
 
@@ -32,6 +32,7 @@ jobs:
         os:
         - ubuntu-latest
         ocaml:
+        - 4.14.1
         - 4.13.1
         - 4.12.1
         - 4.11.2
@@ -54,7 +55,7 @@ jobs:
     runs-on: ${{matrix.os}}
     steps:
     - uses: actions/checkout@v2
-    - uses: avsm/setup-ocaml@v2
+    - uses: ocaml/setup-ocaml@v2
       with:
         ocaml-compiler: ${{matrix.ocaml}}
 
